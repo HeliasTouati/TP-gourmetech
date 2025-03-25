@@ -1,0 +1,13 @@
+button{
+    border-radius: 50px;
+    border: none;
+    padding: 10px;
+}
+
+.card{
+    button{
+        svg{
+           color: rgb(255, 8, 0);
+        }
+    }
+}
