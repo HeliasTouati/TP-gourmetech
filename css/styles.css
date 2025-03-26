@@ -6,6 +6,15 @@
     font-family: "Roboto", sans-serif;
 }
 
+body{
+    background-color: var(--light-color);
+    h2{
+        text-align: center;
+        color: var(--primary-color);
+        margin: 10px;
+    }
+}
+
 .sombre {
     --light-color: #111;
     --dark-color: #fff;
@@ -13,9 +22,7 @@
     --text-color: #fff;
 }
 
-body {
-    background-color: var(--light-color);
-}
+
 
 header {
     display: flex;
@@ -73,6 +80,8 @@ header {
     input {
         padding: 10px;
         font-size: larger;
+        border:1px solid lightgray;
+        border-radius: 5px;
 
     }
 
@@ -106,9 +115,9 @@ header {
 }
 
 #recette-grid {
-    margin: 5px;
+    margin: 5px;}
 
-    .card {
+    .card, .hero {
         display: flex;
         flex-direction: column;
         position: relative;
@@ -142,6 +151,8 @@ header {
 
         h2 {
             margin: 15px;
+            color: var(--dark-color);
+            text-align: start;
         }
 
         div {
@@ -151,7 +162,7 @@ header {
 
             p {
                 color: var(--light-color);
-                padding: 10px;
+                padding: 5px;
                 border-radius: 50px;
                 font-size: 12px;
             }
@@ -164,8 +175,12 @@ header {
                 background-color: #2fcb71;
             }
 
-            p:last-child {
+            p:nth-child(3) {
                 background-color: #3498d5;
+            }
+
+            p:last-child{
+                background-color: #ba34d5;
             }
         }
 
@@ -181,7 +196,7 @@ header {
             font-weight: 500;
         }
     }
-}
+
 
 footer {
     margin-top: 50px;
@@ -192,15 +207,23 @@ footer {
     div {
         ul {
             margin: 15px;
-            list-style: none;
             display: grid;
             grid-template-columns: 1fr 1fr;
-
-            
-        }
-        li:first-child {
-                grid-column: 1 / -1; 
+            gap: 5px;
+            li:first-child{
+                grid-column: 1 / -1;
+                text-align: center;
+                margin-bottom: 10px;
+                list-style: none;
             }
+        
+            a {
+               color: var(--dark-color);
+               text-decoration: none;
+            }
+        }
+
+
         .entete-footer {
             color: var(--primary-color);
         }
@@ -222,5 +245,84 @@ footer {
         p {
             margin-block: 10px;
         }
+    }
+}
+
+/* CSS concernant la page recette.html */
+
+.hero{   
+    margin: 5px;     
+    align-items: center;
+    
+    h2{
+        text-align: center;
+        margin: 10px;
+        color: var(--primary-color);
+    }
+    img{
+        aspect-ratio: 1 / 1;
+        border-radius: 10px;
+    }
+}
+.ingredients{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 10px;
+    align-items: center;
+
+    h2{
+        grid-column: 1 / -1;
+    }
+    .card-ingredients{
+        text-align: center;
+        box-shadow: 0px 5px 10px lightgrey;
+        border-radius: 10px;
+        img{
+            width: 100%;
+            aspect-ratio: 1 / 1;   
+        }
+    }
+}
+.preparation{
+        ol{
+            margin: 25px;
+            text-align: justify;
+            li{
+                margin-bottom: 15px;
+            }
+        }
+}
+
+.remarketing{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    gap: 10px;
+    h2{
+        grid-column: 1 / -1;
+    }
+    .card{
+        align-items: center;
+    }
+}
+
+/* css concernant la page favoris */
+.favoris{
+    margin:10px;
+    .no-favoris{
+        display: none;
+    }
+}
+/* css concernant la page a propos */
+.infos{
+    margin: 10px;
+    text-align: justify;
+    display: grid;
+    gap: 10px;
+}
+.contact{
+    form{
+        
     }
 }
