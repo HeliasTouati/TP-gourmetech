@@ -7,22 +7,24 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/scrpits.js" defer></script>
+    <script src="js/scripts.js" defer></script>
 </head>
 
 <body>
     <header>
         <a href="#top">
-            <img src="assets/images/logo_gourmetech.png" alt="logo de Gourmetech">
+            <img src="assets/images/logo_gourmetech.png" alt="Logo de Gourmetech">
         </a>
         <h1>GourmeTech</h1>
-        <ul>
-            <li>Accueil</li>
-            <li>Ajouter une recette</li>
-            <li>Mes favoris</li>
-            <li>À propos</li>
-        </ul>
-        <button>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Ajouter une recette</a></li>
+                <li><a href="#">Mes favoris</a></li>
+                <li><a href="#">À propos</a></li>
+            </ul>
+        </nav>
+        <button aria-label="Mode sombre">
             <svg width="36" height="36">
                 <path fill="#ffd983"
                     d="M30.312.776C32 19 20 32 .776 30.312c8.199 7.717 21.091 7.588 29.107-.429C37.9 21.867 38.03 8.975 30.312.776" />
@@ -30,7 +32,7 @@
                     d="M30.705 15.915a1.163 1.163 0 1 0 1.643 1.641a1.163 1.163 0 0 0-1.643-1.641m-16.022 14.38a1.74 1.74 0 0 0 0 2.465a1.742 1.742 0 1 0 0-2.465m13.968-2.147a2.904 2.904 0 0 1-4.108 0a2.9 2.9 0 0 1 0-4.107a2.9 2.9 0 0 1 4.108 0a2.9 2.9 0 0 1 0 4.107" />
             </svg>
         </button>
-        <button>
+        <button aria-label="Mode clair">
             <svg width="36" height="36" viewBox="0 0 128 128">
                 <path fill="#fcc11a"
                     d="M37.41 41.95c-9.71 12.48-9.54 34.65 2.87 45.64c14.09 12.47 33.92 12.34 46.39.87c14.95-13.76 14.09-36.66.87-49.63c-13.29-13.04-37.04-13.72-50.13 3.12" />
