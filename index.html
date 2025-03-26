@@ -21,8 +21,6 @@
             <img src="assets/images/logo_gourmetech.png" alt="Logo de Gourmetech">
         </a>
         <h1>GourmeTech</h1>
-
-        </button>
         <div class="open">
             <nav>
                 <ul>
@@ -35,7 +33,7 @@
         </div>
         <div class="overlay"></div>
         <button class="sombre" aria-label="Mode sombre">
-            <svg width="36" height="36" >
+            <svg width="36" height="36">
                 <path fill="#ffd983"
                     d="M30.312.776C32 19 20 32 .776 30.312c8.199 7.717 21.091 7.588 29.107-.429C37.9 21.867 38.03 8.975 30.312.776" />
                 <path fill="#ffcc4d"
@@ -77,18 +75,18 @@
                 </div>
             </fieldset>
             <fieldset>
-                <h2>Temps de préparation</h2>
+                <h2>Temps <span> de préparation</span></h2>
                 <div>
                     <input type="checkbox" name="rapide" id="rapide">
-                    <label for="rapide">Rapide (< 30min) </label>
+                    <label for="rapide">Rapide <span> (< 30min)</span> </label>
                 </div>
                 <div>
                     <input type="checkbox" name="moyen" id="moyen">
-                    <label for="moyen">Moyen (30-60 min)</label>
+                    <label for="moyen">Moyen <span>(30-60 min)</span></label>
                 </div>
                 <div>
                     <input type="checkbox" name="long" id="long">
-                    <label for="long">Long (>60 min)</label>
+                    <label for="long">Long <span>(>60 min)</span></label>
                 </div>
             </fieldset>
             <fieldset>
@@ -110,39 +108,49 @@
         <section id="recette-grid">
             <article class="card">
                 <img src="assets/images/tarte_aux_pommes.jpg" alt="image d'une tarte aux pommes" class="image-card">
-                <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <button class="like"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z" />
                     </svg></button>
                 <h2>Tarte aux pommes</h2>
-                <p>Dessert</p>
-                <p>60 min</p>
-                <p>Facile</p>
-                <button><a href="recette.html"></a>Voir la recette</button>
+                <div>
+                    <p>Dessert</p>
+                    <p>60 min</p>
+                    <p>Facile</p>
+                </div>
+
+                <a href="recette.html">Voir la recette</a>
             </article>
             <article class="card">
                 <img src="assets/images/ratatouille.jpg" alt="image d'une Ratatouille" class="image-card">
-                <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <button class="like active"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z" />
                     </svg></button>
+
                 <h2>Ratatouille provencale</h2>
-                <p>Plat</p>
-                <p>45 min</p>
-                <p>Moyen</p>
-                <button><a href="recette.html"></a>Voir la recette</button>
+                <div>
+                    <p>Plat</p>
+                    <p>45 min</p>
+                    <p>Moyen</p>
+                </div>
+
+                <a href="recette.html">Voir la recette</a>
             </article>
             <article class="card">
                 <img src="assets/images/veloute_potiron.jpg" alt="image d'un velouté de potiron" class="image-card">
-                <button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <button class="like"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z" />
                     </svg></button>
                 <h2>Velouté de potiron</h2>
-                <p>Entrée</p>
-                <p>30 min</p>
-                <p>Facile</p>
-                <button><a href="recette.html"></a>Voir la recette</button>
+                <div>
+                    <p>Entrée</p>
+                    <p>30 min</p>
+                    <p>Facile</p>
+                </div>
+
+                <a href="recette.html">Voir la recette</a>
             </article>
         </section>
     </main>
@@ -157,8 +165,8 @@
             </ul>
             <div>
                 <p class="entete-footer">A propos de Gourmetech</p>
-                GourmeTech est une plateforme de recettes culinaires interactive développée dans le cadre d'un projet
-                pédagogique.<p></p>
+                <p>GourmeTech est une plateforme de recettes culinaires interactive développée dans le cadre d'un projet
+                pédagogique.</p>
             </div>
         </div>
         <div>

@@ -1,13 +1,23 @@
-:root{
+:root {
     --primary-color: #e67f22;
     --light-color: #fff;
     --dark-color: #111;
     --bg-secondary: #f9f9f9;
     font-family: "Roboto", sans-serif;
-  
-  }
+}
 
-  header{
+.sombre {
+    --light-color: #111;
+    --dark-color: #fff;
+    --bg-secondary: #222;
+    --text-color: #fff;
+}
+
+body {
+    background-color: var(--light-color);
+}
+
+header {
     display: flex;
     padding: 10px;
     margin: 5px;
@@ -15,36 +25,42 @@
     align-items: center;
     justify-content: space-evenly;
     box-shadow: 0px 4px 4px lightgrey;
-    
-    a{
+
+    a {
         width: 40px;
     }
-    h1{
+
+    h1 {
         color: var(--primary-color);
         font-size: 40px;
     }
-    .open{
+
+    .open {
         display: none;
     }
-    .sombre{
+
+    .sombre {
         border-radius: 50px;
         border: none;
         padding: 5px;
     }
-    .clair{
+
+    .clair {
         display: none;
     }
+
     .menu-toggle {
         background-color: white;
         border: none;
-        img{
+
+        img {
             width: 30px;
         }
     }
 
-  }
+}
 
-  .fieldset-container{
+.fieldset-container {
     margin: 5px;
     padding: 20px;
     margin-bottom: 15px;
@@ -52,10 +68,159 @@
     box-shadow: 0px 4px 4px lightgrey;
     display: grid;
     gap: 10px;
-    input{
+    border-radius: 10px;
+
+    input {
         padding: 10px;
         font-size: larger;
 
     }
 
-  }
+    button {
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 3px;
+        color: var(--light-color);
+    }
+
+
+    fieldset {
+        border: none;
+        background-color: var(--bg-secondary);
+        padding: 10px;
+
+        span {
+            display: none;
+        }
+
+        h2 {
+            margin: 15px;
+            font-size: medium;
+
+        }
+
+        div {
+            margin: 15px;
+        }
+    }
+}
+
+#recette-grid {
+    margin: 5px;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 4px lightgrey;
+
+        img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 10px;
+        }
+
+        .like {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+            border-radius: 50px;
+            padding: 5px;
+            background-color: var(--light-color);
+            color: lightgray;
+        }
+
+        .like.active {
+            color: red;
+
+        }
+
+        h2 {
+            margin: 15px;
+        }
+
+        div {
+            display: flex;
+            gap: 10px;
+            margin: 15px;
+
+            p {
+                color: var(--light-color);
+                padding: 10px;
+                border-radius: 50px;
+                font-size: 12px;
+            }
+
+            p:first-child {
+                background-color: var(--primary-color);
+            }
+
+            p:nth-child(2) {
+                background-color: #2fcb71;
+            }
+
+            p:last-child {
+                background-color: #3498d5;
+            }
+        }
+
+        a {
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            color: var(--light-color);
+            background-color: var(--primary-color);
+            margin: 15px;
+            padding: 10px;
+            font-weight: 500;
+        }
+    }
+}
+
+footer {
+    margin-top: 50px;
+    border-top: 1px solid lightgray;
+    display: grid;
+    margin: 15px;
+
+    div {
+        ul {
+            margin: 15px;
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            
+        }
+        li:first-child {
+                grid-column: 1 / -1; 
+            }
+        .entete-footer {
+            color: var(--primary-color);
+        }
+
+        div {
+            border-top: 1px solid lightgray;
+            text-align: center;
+
+            p {
+                margin-block: 10px;
+            }
+        }
+    }
+
+    div:last-child {
+        border-top: 1px solid lightgray;
+        text-align: center;
+
+        p {
+            margin-block: 10px;
+        }
+    }
+}
