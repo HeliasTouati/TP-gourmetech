@@ -8,6 +8,7 @@
 
 body {
     background-color: var(--light-color);
+    color: var(--dark-color);
 
     h2 {
         text-align: center;
@@ -21,6 +22,8 @@ body {
     --dark-color: #fff;
     --bg-secondary: #222;
     --text-color: #fff;
+    
+
 }
 
 
@@ -48,7 +51,7 @@ header {
 
     }
 
-    .sombre {
+    .sombre, .clair {
         border-radius: 50px;
         border: none;
         padding: 5px;
@@ -56,10 +59,13 @@ header {
 
     .clair {
         display: none;
+
     }
 
     .menu-toggle {
         background-color: white;
+        padding: 10px;
+        border-radius: 10px;
         border: none;
 
         img {
@@ -104,6 +110,7 @@ header {
         border: none;
         background-color: var(--bg-secondary);
         padding: 10px;
+        margin-bottom: 10px;
 
         span {
             display: none;
@@ -540,7 +547,7 @@ footer {
 
     .footer-nav {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
 
         ul {
             display: block;
