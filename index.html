@@ -26,10 +26,10 @@
         <div class="open">
             <nav aria-label="Navigation principale">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Ajouter une recette</a></li>
-                    <li><a href="#">Mes favoris</a></li>
-                    <li><a href="#">À propos</a></li>
+                    <li><a class="page-active" href="index.html">Accueil</a></li>
+                    <li><a href="index.html">Ajouter une recette</a></li>
+                    <li><a href="favoris.html">Mes favoris</a></li>
+                    <li><a href="a-propos.html">À propos</a></li>
                 </ul>
             </nav>
         </div>
@@ -64,51 +64,61 @@
             <input type="search" id="search" placeholder="Rechercher une recette..."
                 aria-label="Rechercher une recette">
             <button type="submit" aria-label="Soumettre la recherche">Rechercher</button>
-            <fieldset>
-                <h2>Catégorie</h2>
-                <div>
-                    <input type="checkbox" name="entree" id="entree">
-                    <label for="entree">Entrée</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="plat" id="plat">
-                    <label for="plat">Plat</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="dessert" id="dessert">
-                    <label for="dessert">Dessert</label>
-                </div>
-            </fieldset>
-            <fieldset>
-                <h2>Temps <span> de préparation</span></h2>
-                <div>
-                    <input type="checkbox" name="rapide" id="rapide">
-                    <label for="rapide">Rapide <span> (< 30min)</span> </label>
-                </div>
-                <div>
-                    <input type="checkbox" name="moyen" id="moyen">
-                    <label for="moyen">Moyen <span>(30-60 min)</span></label>
-                </div>
-                <div>
-                    <input type="checkbox" name="long" id="long">
-                    <label for="long">Long <span>(>60 min)</span></label>
-                </div>
-            </fieldset>
-            <fieldset>
-                <h2>Difficulté</h2>
-                <div>
-                    <input type="checkbox" name="facile" id="facile">
-                    <label for="facile">Facile </label>
-                </div>
-                <div>
-                    <input type="checkbox" name="medium" id="medium">
-                    <label for="medium">Moyen</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="difficile" id="difficile">
-                    <label for="difficile">Difficile</label>
-                </div>
-            </fieldset>
+            <div class="filtre-container">
+
+                <fieldset>
+                    <h2>Catégorie</h2>
+                    <div>
+                        <div>
+                            <input type="checkbox" name="entree" id="entree">
+                            <label for="entree">Entrée</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="plat" id="plat">
+                            <label for="plat">Plat</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="dessert" id="dessert">
+                            <label for="dessert">Dessert</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <h2>Temps <span> de préparation</span></h2>
+                    <div >
+
+                        <div>
+                            <input type="checkbox" name="rapide" id="rapide">
+                            <label for="rapide">Rapide <span> (< 30min)</span> </label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="moyen" id="moyen">
+                            <label for="moyen">Moyen <span>(30-60 min)</span></label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="long" id="long">
+                            <label for="long">Long <span>(>60 min)</span></label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <h2>Difficulté</h2>
+                    <div>
+                        <div>
+                            <input type="checkbox" name="facile" id="facile">
+                            <label for="facile">Facile </label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="medium" id="medium">
+                            <label for="medium">Moyen</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="difficile" id="difficile">
+                            <label for="difficile">Difficile</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
         </fieldset>
         <!-- Grille de recettes -->
         <section id="recette-grid" aria-label="Grille de recettes">

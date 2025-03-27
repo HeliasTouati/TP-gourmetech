@@ -2,13 +2,14 @@
     --primary-color: #e67f22;
     --light-color: #fff;
     --dark-color: #111;
-    --bg-secondary: #f9f9f9;
+    --bg-secondary: #e9e9e9;
     font-family: "Roboto", sans-serif;
 }
 
-body{
+body {
     background-color: var(--light-color);
-    h2{
+
+    h2 {
         text-align: center;
         color: var(--primary-color);
         margin: 10px;
@@ -44,6 +45,7 @@ header {
 
     .open {
         display: none;
+
     }
 
     .sombre {
@@ -77,10 +79,15 @@ header {
     gap: 10px;
     border-radius: 10px;
 
+    h2 {
+        color: var(--dark-color);
+        text-align: start;
+    }
+
     input {
         padding: 10px;
         font-size: larger;
-        border:1px solid lightgray;
+        border: 1px solid lightgray;
         border-radius: 5px;
 
     }
@@ -115,87 +122,89 @@ header {
 }
 
 #recette-grid {
-    margin: 5px;}
+    margin: 5px;
+}
 
-    .card, .hero {
+.card,
+.hero {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 4px lightgrey;
+
+    img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+        margin-bottom: 10px;
+    }
+
+    .like {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        border-radius: 50px;
+        padding: 5px;
+        background-color: var(--light-color);
+        color: lightgray;
+    }
+
+    .like.active {
+        color: red;
+
+    }
+
+    h2 {
+        margin: 15px;
+        color: var(--dark-color);
+        text-align: start;
+    }
+
+    div {
         display: flex;
-        flex-direction: column;
-        position: relative;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0px 4px 4px lightgrey;
+        gap: 10px;
+        margin: 15px;
 
-        img {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            border-radius: 10px 10px 0 0;
-            margin-bottom: 10px;
-        }
-
-        .like {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            border: none;
-            border-radius: 50px;
-            padding: 5px;
-            background-color: var(--light-color);
-            color: lightgray;
-        }
-
-        .like.active {
-            color: red;
-
-        }
-
-        h2 {
-            margin: 15px;
-            color: var(--dark-color);
-            text-align: start;
-        }
-
-        div {
-            display: flex;
-            gap: 10px;
-            margin: 15px;
-
-            p {
-                color: var(--light-color);
-                padding: 5px;
-                border-radius: 50px;
-                font-size: 12px;
-            }
-
-            p:first-child {
-                background-color: var(--primary-color);
-            }
-
-            p:nth-child(2) {
-                background-color: #2fcb71;
-            }
-
-            p:nth-child(3) {
-                background-color: #3498d5;
-            }
-
-            p:last-child{
-                background-color: #ba34d5;
-            }
-        }
-
-        a {
-            text-align: center;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
+        p {
             color: var(--light-color);
+            padding: 5px;
+            border-radius: 50px;
+            font-size: 12px;
+        }
+
+        p:first-child {
             background-color: var(--primary-color);
-            margin: 15px;
-            padding: 10px;
-            font-weight: 500;
+        }
+
+        p:nth-child(2) {
+            background-color: #2fcb71;
+        }
+
+        p:nth-child(3) {
+            background-color: #3498d5;
+        }
+
+        p:nth-child(4) {
+            background-color: #ba34d5;
         }
     }
+
+    a {
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        color: var(--light-color);
+        background-color: var(--primary-color);
+        margin: 15px;
+        padding: 10px;
+        font-weight: 500;
+    }
+}
 
 
 footer {
@@ -210,16 +219,17 @@ footer {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5px;
-            li:first-child{
+
+            li:first-child {
                 grid-column: 1 / -1;
                 text-align: center;
                 margin-bottom: 10px;
                 list-style: none;
             }
-        
+
             a {
-               color: var(--dark-color);
-               text-decoration: none;
+                color: var(--dark-color);
+                text-decoration: none;
             }
         }
 
@@ -250,79 +260,326 @@ footer {
 
 /* CSS concernant la page recette.html */
 
-.hero{   
-    margin: 5px;     
+.hero {
+    margin: 5px;
     align-items: center;
-    
-    h2{
+
+    h2 {
         text-align: center;
         margin: 10px;
         color: var(--primary-color);
     }
-    img{
+
+    img {
         aspect-ratio: 1 / 1;
         border-radius: 10px;
     }
 }
-.ingredients{
+
+.ingredients {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin: 10px;
     align-items: center;
 
-    h2{
+    h2 {
         grid-column: 1 / -1;
     }
-    .card-ingredients{
+
+    .card-ingredients {
         text-align: center;
         box-shadow: 0px 5px 10px lightgrey;
         border-radius: 10px;
-        img{
+
+        img {
             width: 100%;
-            aspect-ratio: 1 / 1;   
+            aspect-ratio: 1 / 1;
         }
     }
 }
-.preparation{
-        ol{
-            margin: 25px;
-            text-align: justify;
-            li{
-                margin-bottom: 15px;
-            }
+
+.preparation {
+    ol {
+        margin: 25px;
+        text-align: justify;
+
+        li {
+            margin-bottom: 15px;
         }
+    }
 }
 
-.remarketing{
+.remarketing {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px;
     gap: 10px;
-    h2{
+
+    h2 {
         grid-column: 1 / -1;
     }
-    .card{
+
+    .card {
         align-items: center;
     }
 }
 
 /* css concernant la page favoris */
-.favoris{
-    margin:10px;
-    .no-favoris{
+.favoris {
+    margin: 10px;
+
+    .no-favoris {
         display: none;
     }
 }
+
 /* css concernant la page a propos */
-.infos{
+.infos {
     margin: 10px;
     text-align: justify;
     display: grid;
     gap: 10px;
 }
-.contact{
-    form{
-        
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+    margin: auto;
+    box-shadow: 0px 5px 10px lightgray;
+    border-radius: 10px;
+    border: 1px solid rgb(238, 237, 237);
+    background-color: var(--primary-color);
+
+    h2 {
+        color: var(--light-color);
+        margin-bottom: 20px;
+    }
+
+    form {
+        width: 100%;
+        padding: 10px;
+
+        input,
+        textarea,
+        button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 5px;
+            border: 1px solid gray;
+            border-radius: 50px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            border: 2px solid var(--light-color);
+            border-radius: 50px;
+            color: var(--light-color);
+        }
+
+    }
+}
+
+.faq {
+    margin: 10px;
+    box-shadow: 0px 5px 10px lightgray;
+    padding: 10px;
+    display: grid;
+
+    details {
+        margin: 10px;
+        border: 1px solid var(--primary-color);
+        border-radius: 10px;
+        text-align: justify;
+
+    }
+
+    summary {
+        padding: 10px;
+    }
+
+    p {
+        background-color: var(--primary-color);
+        border-radius: 0 0 10px 10px;
+        color: var(--light-color);
+        padding: 10px;
+    }
+}
+
+/* tablette */
+@media (min-width: 768px) {
+
+    /* index.html */
+    .fieldset-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px 0;
+
+        #search {
+            grid-column: 1/3;
+            padding: 10px;
+        }
+
+        fieldset {
+            grid-column: 1/-1;
+            display: block;
+
+            h2 {
+
+                span {
+                    display: inline-block;
+                }
+            }
+
+            div {
+                display: flex;
+                margin: 10px;
+                gap: 5px;
+
+            }
+
+        }
+    }
+
+    #recette-grid {
+        margin: 30px 5px 30px 5px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    /* favoris.html */
+    .favoris {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+
+        h2 {
+            grid-column: 1/-1;
+        }
+    }
+    /* recette.html */
+    .hero{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        h2{
+            grid-column: 1/-1;
+        }
+        div{
+            display: block;
+            p{
+                margin-bottom: 20px;
+                text-align: center;
+                font-size: large;
+            }
+        }
+    }
+    .ingredients{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    /* A propos */
+    .contact{
+        width: 50vw;
+    }
+}
+
+@media(min-width:1440px) {
+    header {
+        .open {
+            display: flex;
+
+            ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                text-decoration: none;
+
+                a {
+                    text-decoration: none;
+                    color: var(--dark-color);
+                    font-size: 32px;
+                    font-weight: 500;
+                }
+
+                .page-active {
+                    background-color: var(--bg-secondary);
+                    color: var(--primary-color);
+                    padding: 10px;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+    }
+
+    .fieldset-container {
+        .filtre-container {
+            display: flex;
+            gap: 20px;
+
+            div {
+                display: block;
+
+                span {
+                    display: inline-block;
+                }
+
+            }
+        }
+    }
+
+    #recette-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-nav {
+        display: flex;
+        justify-content: space-between;
+
+        ul {
+            display: block;
+            list-style: none;
+
+            li:first-child {
+                text-align: start;
+            }
+
+            li {
+                margin-bottom: 10px;
+            }
+        }
+
+        .about-footer {
+            border: none;
+            text-align: start;
+        }
+
+    }
+
+    /* favoris.html */
+    .favoris {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+
+        h2 {
+            grid-column: 1/-1;
+        }
+
+    }
+
+    /* recette.html */
+    .preparation{
+        padding-inline: 200px;
+        font-size: large;
+    }
+    /* a-propos.html */
+    .contact{
+        width: 25vw;
     }
 }
