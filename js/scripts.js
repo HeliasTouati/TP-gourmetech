@@ -4,84 +4,56 @@ const boutonModeClair = document.querySelector(".clair");
 const body = document.body;
 
 // Activer mode sombre
-boutonModeSombre.addEventListener('click', () => {
-    body.classList.add('sombre');
-    boutonModeSombre.style.display = 'none';
-    boutonModeClair.style.display = 'block';
-    localStorage.setItem('theme', 'sombre');
-});
+if (boutonModeSombre) {
+    boutonModeSombre.addEventListener('click', () => {
+        body.classList.add('sombre');
+        boutonModeSombre.style.display = 'none';
+        boutonModeClair.style.display = 'block';
+        localStorage.setItem('theme', 'sombre');
+    });
+}
 
 // Activer mode clair
-boutonModeClair.addEventListener('click', () => {
-    body.classList.remove('sombre');
-    boutonModeSombre.style.display = 'block';
-    boutonModeClair.style.display = 'none';
-    localStorage.setItem('theme', 'clair');
-});
+if (boutonModeClair) {
+    boutonModeClair.addEventListener('click', () => {
+        body.classList.remove('sombre');
+        boutonModeSombre.style.display = 'block';
+        boutonModeClair.style.display = 'none';
+        localStorage.setItem('theme', 'clair');
+    });
+}
 
 // Cacher bouton selon theme
 if (localStorage.getItem('theme') === 'sombre') {
     body.classList.add('sombre');
-    boutonModeSombre.style.display = 'none';
-    boutonModeClair.style.display = 'block';
+    if (boutonModeSombre) boutonModeSombre.style.display = 'none';
+    if (boutonModeClair) boutonModeClair.style.display = 'block';
 } else {
     body.classList.remove('sombre');
-    boutonModeSombre.style.display = 'block';
-    boutonModeClair.style.display = 'none';
+    if (boutonModeSombre) boutonModeSombre.style.display = 'block';
+    if (boutonModeClair) boutonModeClair.style.display = 'none';
 }
 
 //***************************************FILTRAGE DYNAMIQUE*************************************************** */
 const searchInput = document.querySelector("#search");
 const recetteGrid = document.querySelector("#recette-grid");
-const cards = Array.from(recetteGrid.querySelectorAll('.card'));
 
-// Sélection des filtres
-const categorieCheckboxes = document.querySelectorAll('input[name="entree"], input[name="plat"], input[name="dessert"]');
-const tempsCheckboxes = document.querySelectorAll('input[name="rapide"], input[name="moyen"], input[name="long"]');
-const difficultéCheckboxes = document.querySelectorAll('input[name="facile"], input[name="medium"], input[name="difficile"]');
+// Vérifier si tous les éléments nécessaires existent avant de continuer
+if (searchInput && recetteGrid) {
+    const cards = Array.from(recetteGrid.querySelectorAll('.card'));
 
-// Ajout des écouteurs d'événements
-searchInput.addEventListener('input', () => {
-    cards.forEach(card => {
-        const searchTerm = searchInput.value.toLowerCase();
-        const nomRecette = card.querySelector('h2').textContent.toLowerCase();
-        const matchRecherche = nomRecette.includes(searchTerm);
+    // Sélection des filtres
+    const categorieCheckboxes = document.querySelectorAll('input[name="entree"], input[name="plat"], input[name="dessert"]');
+    const tempsCheckboxes = document.querySelectorAll('input[name="rapide"], input[name="moyen"], input[name="long"]');
+    const difficultéCheckboxes = document.querySelectorAll('input[name="facile"], input[name="medium"], input[name="difficile"]');
 
-        const categorie = card.querySelectoryl('div p')[0].textContent.toLowerCase();
-        const tempsPreparation = parseInt(card.querySelectorAll('div p')[1].textContent);
-        const difficultéRecette = card.querySelectorAll('div p')[2].textContent.toLowerCase();
-
-        const categorieSelectionnees = Array.from(categorieCheckboxes)
-            .filter(checkbox => checkbox.checked)
-            .map(checkbox => checkbox.name.toLowerCase());
-        const matchCategorie = categorieSelectionnees.length === 0 ||
-            categorieSelectionnees.includes(categorie);
-
-        const tempsSelectionnes = Array.from(tempsCheckboxes)
-            .filter(checkbox => checkbox.checked)
-            .map(checkbox => checkbox.name);
-        const matchTemps = tempsSelectionnes.length === 0 ||
-            (tempsSelectionnes.includes('rapide') && tempsPreparation < 30) ||
-            (tempsSelectionnes.includes('moyen') && tempsPreparation >= 30 && tempsPreparation <= 60) ||
-            (tempsSelectionnes.includes('long') && tempsPreparation > 60);
-
-        const difficultésSelectionnees = Array.from(difficultéCheckboxes)
-            .filter(checkbox => checkbox.checked)
-            .map(checkbox => checkbox.name);
-        const matchDifficulté = difficultésSelectionnees.length === 0 ||
-            difficultésSelectionnees.some(diff =>
-                diff.toLowerCase() === difficultéRecette ||
-                (diff === 'medium' && difficultéRecette === 'moyen')
-            );
-
-        card.style.display = (matchRecherche && matchCategorie && matchTemps && matchDifficulté) ? 'flex' : 'none';
-    });
-});
-
-// Ajout des écouteurs pour les checkboxes
-[...categorieCheckboxes, ...tempsCheckboxes, ...difficultéCheckboxes].forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
+    // Fonction de filtrage
+    function filtrerRecettes() {
         cards.forEach(card => {
+            const searchTerm = searchInput.value.toLowerCase();
+            const nomRecette = card.querySelector('h2').textContent.toLowerCase();
+            const matchRecherche = nomRecette.includes(searchTerm);
+
             const categorie = card.querySelectorAll('div p')[0].textContent.toLowerCase();
             const tempsPreparation = parseInt(card.querySelectorAll('div p')[1].textContent);
             const difficultéRecette = card.querySelectorAll('div p')[2].textContent.toLowerCase();
@@ -109,121 +81,91 @@ searchInput.addEventListener('input', () => {
                     (diff === 'medium' && difficultéRecette === 'moyen')
                 );
 
-            const searchTerm = searchInput.value.toLowerCase();
-            const nomRecette = card.querySelector('h2').textContent.toLowerCase();
-            const matchRecherche = nomRecette.includes(searchTerm);
-
             card.style.display = (matchRecherche && matchCategorie && matchTemps && matchDifficulté) ? 'flex' : 'none';
         });
+    }
+
+    // Ajouter les écouteurs d'événements
+    searchInput.addEventListener('input', filtrerRecettes);
+
+    // Ajouter des écouteurs pour les checkboxes
+    [...categorieCheckboxes, ...tempsCheckboxes, ...difficultéCheckboxes].forEach(checkbox => {
+        checkbox.addEventListener('change', filtrerRecettes);
     });
-});
+}
 
 //*******************************************************AJOUT FAVORIS***************** */
-
 const likeButtons = document.querySelectorAll('.like');
-const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+let favorites = JSON.parse(localStorage.getItem('favorites') || '[]'); // Utilisation d'une variable mutable
 
-for (const button of likeButtons) {
+likeButtons.forEach(button => {
     const card = button.closest('.card');
-    const recipeTitle = card.querySelector('h2').textContent;
+    if (!card) return;
 
-    // Initialiser l'état des boutons like
-    if (favorites.includes(recipeTitle)) {
+    const recipeTitle = card.querySelector('h2');
+    if (!recipeTitle) return;
+
+    const recipeText = recipeTitle.textContent;
+
+    if (favorites.includes(recipeText)) {
         button.classList.add('active');
     }
 
-    // Ajouter l'écouteur d'événement pour le like
     button.addEventListener('click', () => {
-        // Récupérer à nouveau les favoris (pour s'assurer d'avoir la dernière version)
-        const currentFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-        // Vérifier si la recette est déjà en favoris
-        const index = currentFavorites.indexOf(recipeTitle);
+        const index = favorites.indexOf(recipeText);
 
         if (index > -1) {
-            // Supprimer des favoris
-            currentFavorites.splice(index, 1);
+            favorites.splice(index, 1);
             button.classList.remove('active');
         } else {
-            // Ajouter aux favoris
-            currentFavorites.push(recipeTitle);
+            favorites.push(recipeText);
             button.classList.add('active');
         }
 
-        // Sauvegarder les favoris mis à jour
-        localStorage.setItem('favorites', JSON.stringify(currentFavorites));
-
-        // Mettre à jour la page des favoris si elle existe
-        updateFavoritesPage();
+        localStorage.setItem('favorites', JSON.stringify(favorites)); // Écriture unique après modification
     });
-};
+});
+const favorisGrid = document.querySelector("#favoris-grid");
+const noFavorisMessage = document.querySelector(".no-favoris");
 
+if (favorisGrid && noFavorisMessage) {
+    // Récupérer les favoris depuis localStorage
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
-// Fonction pour mettre à jour la page des favoris
-function updateFavoritesPage() {
-    const favoritesContainer = document.querySelector('.favoris');
-    if (!favoritesContainer) return;
+    if (favorites.length === 0) {
+        favorisGrid.style.display = "none"; // Masquer la grille des favoris
+        noFavorisMessage.style.display = "block"; // Afficher le message "Aucun favori"
+    } else {
+        favorisGrid.style.display = "flex"; // Afficher la grille des favoris
+        noFavorisMessage.style.display = "none"; // Masquer le message "Aucun favori"
 
-    // Charger les favoris
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    const cards = document.querySelectorAll('.card');
-    const noFavoritesMessage = favoritesContainer.querySelector('.no-favoris');
+        favorites.forEach(recipeName => {
+            const card = document.createElement("div");
+            card.classList.add("card");
 
-    // Réinitialiser la grille des favoris
-    const existingFavoriteCards = favoritesContainer.querySelectorAll('.card');
-    for (const card of existingFavoriteCards) {
-        card.remove();
-    }
+            // Structure de la card (en utilisant la même structure que dans index)
+            card.innerHTML = `
+                           <h2>${recipeName}</h2>
+            <button class="remove-fav">Retirer des favoris</button>
+            `;
 
-    // Filtrer et ajouter les cartes des recettes favorites
-    const favoriteCards = Array.from(cards).filter(card => {
-        const recipeTitle = card.querySelector('h2').textContent;
-        return favorites.includes(recipeTitle);
-    });
+            // Ajouter un écouteur sur le bouton de suppression
+            card.querySelector(".remove-fav").addEventListener("click", () => {
+                favorites = favorites.filter(fav => fav !== recipeName);
+                localStorage.setItem("favorites", JSON.stringify(favorites));
+                card.remove();
 
-    if (favoriteCards.length > 0) {
-        noFavoritesMessage.style.display = 'none';
-        for (const card of favoriteCards) {
-            const clonedCard = card.cloneNode(true);
-
-            // Réactiver le bouton like
-            const likeButton = clonedCard.querySelector('.like');
-            likeButton.classList.add('active');
-
-            // Ajouter l'écouteur d'événement pour le like sur la carte clonée
-            likeButton.addEventListener('click', () => {
-                // Récupérer à nouveau les favoris
-                const currentFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-                const recipeTitle = clonedCard.querySelector('h2').textContent;
-
-                // Vérifier si la recette est déjà en favoris
-                const index = currentFavorites.indexOf(recipeTitle);
-
-                if (index > -1) {
-                    // Supprimer des favoris
-                    currentFavorites.splice(index, 1);
-                    likeButton.classList.remove('active');
-                } else {
-                    // Ajouter aux favoris
-                    currentFavorites.push(recipeTitle);
-                    likeButton.classList.add('active');
+                // Vérifier si la liste des favoris est vide après suppression
+                if (favorites.length === 0) {
+                    favorisGrid.style.display = "none";
+                    noFavorisMessage.style.display = "block";
                 }
-
-                // Sauvegarder les favoris mis à jour
-                localStorage.setItem('favorites', JSON.stringify(currentFavorites));
-
-                // Mettre à jour la page des favoris
-                updateFavoritesPage();
             });
 
-            favoritesContainer.appendChild(clonedCard);
-        }
-    } else {
-        noFavoritesMessage.style.display = 'block';
+            favorisGrid.appendChild(card);
+        });
     }
-}
+} 
 
-// Mettre à jour la page des favoris si elle existe
-if (document.querySelector('.favoris')) {
-    updateFavoritesPage();
-}
+//**************************************************** A propos******************************************************* */
+const

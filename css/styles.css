@@ -335,9 +335,17 @@ footer {
 /* css concernant la page favoris */
 .favoris {
     margin: 10px;
-
     .no-favoris {
         display: none;
+        grid-column: 2/3;
+        text-align: center;
+    }
+    .remove-fav{
+         background-color: var(--primary-color);
+        border: none;
+        border-radius: 3px;
+        color: var(--light-color);
+
     }
 }
 
@@ -469,17 +477,21 @@ footer {
     }
     /* recette.html */
     .hero{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        h2{
-            grid-column: 1/-1;
-        }
-        div{
-            display: block;
-            p{
-                margin-bottom: 20px;
-                text-align: center;
-                font-size: large;
+        .card{
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            h2{
+                grid-column: 1/-1;
+            }
+            div{
+                display: block;
+                padding: 50px;
+                p{
+                    margin-bottom: 20px;
+                    text-align: center;
+                    font-size: large;
+                }
             }
         }
     }
@@ -581,6 +593,15 @@ footer {
     }
 
     /* recette.html */
+    .hero{
+        .card{
+            width: 80%;
+            padding: 10px;
+            div{
+                padding: 100px;
+            }
+        }
+    }
     .preparation{
         padding-inline: 200px;
         font-size: large;
@@ -590,3 +611,4 @@ footer {
         width: 25vw;
     }
 }
+

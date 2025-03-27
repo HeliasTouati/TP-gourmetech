@@ -78,16 +78,32 @@
             <form>
                 <div>
                     <input type="email" name="email" placeholder="E-mail*" required>
+
+                    <div class="invalid-feedback">
+                        Ceci n'est pas une adresse e-mail
+                    </div>
                 </div>
                 <div>
                     <input type="text" name="sujet" placeholder="Sujet*" required>
+                    <div class="invalid-feedback">
+                        Un sujet doit etre ajouté
+                    </div>
                 </div>
                 <div>
                     <textarea name="message" placeholder="Message*" required></textarea>
                 </div>
                 <div>
+                    <input type="checkbox" name="rgpd" id="rgpd">
+                    <label for="rgpd">En cliquant sur le bouton "M'inscrire", j'accepte la collecte de mes données
+                        personnelles...</label>
+                    <div class="invalid-feedback">
+                        La case doit être cochée
+                    </div>
+                </div>
+                <div>
                     <button type="submit">Envoyer</button>
                 </div>
+
             </form>
         </section>
         <section class="faq">
