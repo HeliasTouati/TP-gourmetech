@@ -168,4 +168,8 @@ if (favorisGrid && noFavorisMessage) {
 } 
 
 //**************************************************** A propos******************************************************* */
-const
+const email = document.querySelector("#email");
+
+email.addEventListener("change", function ()) {
+    const mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+}
